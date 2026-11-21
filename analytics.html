@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Masrofy - Analytics &amp; Budget</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="top-bar">
+      <nav class="nav-links">
+        <a href="index.html">Expenses</a>
+        <a href="analytics.html" class="active">Analytics &amp; Budget</a>
+      </nav>
+      <button id="themeToggle" type="button">Dark Mode</button>
+    </div>
+
+    <div class="page-header">
+      <h1>📊 Analytics &amp; Budget</h1>
+      <p class="subtitle">Set your spending limit and inspect category breakdown</p>
+    </div>
+
+    <div class="analytics-grid">
+      <div class="budget-box">
+        <h3>Spending Limit</h3>
+        <div class="form">
+          <div class="field-group">
+            <label for="limitPeriod">Period</label>
+            <select id="limitPeriod">
+              <option value="monthly">Monthly Limit</option>
+              <option value="weekly">Weekly Limit</option>
+            </select>
+          </div>
+
+          <div class="field-group">
+            <label for="limitAmount">Limit Amount (EGP)</label>
+            <input type="number" id="limitAmount" placeholder="Enter spending limit (EGP)">
+          </div>
+
+          <button type="button" class="primary-btn" id="saveLimitBtn">Save Limit</button>
+        </div>
+        <div id="limitSummary" class="limit-summary">No spending limit set yet.</div>
+      </div>
+
+      <div class="chart-box">
+        <h3>Visual Breakdown by Category</h3>
+        <div id="chartBars" class="chart-bars"></div>
+      </div>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

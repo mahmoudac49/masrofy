@@ -3,38 +3,85 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Masrofy - Expense Tracker</title>
+  <title>Masrofy - Expenses</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
-    <h1>💰 Masrofy</h1>
-    <p class="subtitle">Track your expenses and know where your money goes</p>
-
-    <div class="form">
-      <input type="text" id="name" placeholder="Expense name - e.g. Lunch">
-      <input type="number" id="amount" placeholder="Amount">
-      
-      <select id="category">
-        <option value="Food">Food</option>
-        <option value="Transport">Transport</option>
-        <option value="Entertainment">Entertainment</option>
-        <option value="Other">Other</option>
-      </select>
-
-      <button onclick="addExpense()">Add Expense</button>
+    <div class="top-bar">
+      <nav class="nav-links">
+        <a href="index.html" class="active">Expenses</a>
+        <a href="analytics.html">Analytics &amp; Budget</a>
+      </nav>
+      <button id="themeToggle" type="button">Dark Mode</button>
     </div>
 
-    <div class="summary">
-      <h3>Total: <span id="total">0</span> EGP</h3>
-      <p>Food: <span id="foodTotal">0</span> | Transport: <span id="transportTotal">0</span> | Entertainment: <span id="entertainmentTotal">0</span></p>
+    <div class="page-header">
+      <h1>💰 Masrofy</h1>
+      <p class="subtitle">Track your expenses and know where your money goes</p>
     </div>
 
-    <h2>Expenses:</h2>
-    <ul id="list"></ul>
-    <button class="clear-btn" onclick="clearAll()">Clear All</button>
+    <div class="main-grid">
+      <div class="form-card">
+        <h2>Add Expense</h2>
+        <div class="form">
+          <div class="field-group">
+            <label for="name">Expense Name</label>
+            <input type="text" id="name" placeholder="Expense name - e.g. Lunch">
+          </div>
+
+          <div class="field-group">
+            <label for="amount">Amount (EGP)</label>
+            <input type="number" id="amount" placeholder="Amount (EGP)">
+          </div>
+
+          <div class="field-group">
+            <label for="date">Date</label>
+            <input type="date" id="date">
+          </div>
+
+          <div class="field-group">
+            <label for="category">Category</label>
+            <select id="category">
+              <option value="Food">Food</option>
+              <option value="Transport">Transport</option>
+              <option value="Entertainment">Entertainment</option>
+              <option value="Other">Other</option>
+              <option value="custom">+ Add Custom Category...</option>
+            </select>
+          </div>
+
+          <div class="field-group hidden" id="customCategoryGroup">
+            <label for="customCategory">Custom Category</label>
+            <input type="text" id="customCategory" placeholder="Enter new category name (e.g. Study, Health)">
+          </div>
+
+          <button type="button" class="primary-btn" onclick="addExpense()">Add Expense</button>
+        </div>
+      </div>
+
+      <div class="side-panel">
+        <div class="summary">
+          <h3>Total: <span id="total">0</span> EGP</h3>
+          <div class="category-pills">
+            <span class="pill">🍔 Food: <strong id="foodTotal">0</strong></span>
+            <span class="pill">🚌 Transport: <strong id="transportTotal">0</strong></span>
+            <span class="pill">🎮 Entertainment: <strong id="entertainmentTotal">0</strong></span>
+            <span class="pill">💰 Other: <strong id="otherTotal">0</strong></span>
+          </div>
+          <div id="budgetStatus" class="budget-alert hidden"></div>
+        </div>
+
+        <div class="expenses-card">
+          <div class="list-header">
+            <h2>Expenses</h2>
+          </div>
+          <ul id="list"></ul>
+          <button type="button" class="clear-btn" onclick="clearAll()">Clear All</button>
+        </div>
+      </div>
+    </div>
   </div>
-
   <script src="app.js"></script>
 </body>
 </html>
